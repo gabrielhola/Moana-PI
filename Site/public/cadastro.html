@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Moana | Cadastro</title>
+</head>
+<body onload="listar()">
+     <!-- Início do header -->
+      <div class="header">
+          <div class="container-header">
+               <ul class="navbar">
+                    <img src="" alt="Planeta Terra">
+                    <li>
+                         <a href="index.html">Página Inicial</a>
+                    </li>
+                    <li>
+                         <a href="login.html">Login</a>
+                    </li>
+                    <li>
+                         <a href="contato.html">Contate-me</a>
+                    </li>
+               </ul>
+          </div>
+      </div>
+      <!-- Fim do Header -->
+
+      <div class="login">
+          <div class="container">
+               <div class="card card-cadastro">
+                    <div class="formulario">
+                         <div class="campo">
+                              <input type="text" id="ipt_nome" placeholder="Nome">
+                         </div>
+                         <div class="campo">
+                              <input type="text" id="ipt_email" placeholder="Email">
+                         </div>
+                         <div class="campo">
+                              <input type="password" id="ipt_senha" placeholder="Senha">
+                         </div>
+                         <div class="campo">
+                              <input type="password" id="ipt_confirmacao_senha" placeholder="Confirme a Senha">
+                         </div>
+                         <button class="botao" onclick="cadastrar()">Cadastre-se</button>
+                    </div>
+                    <div class="imagem">
+                         <img src="" alt="Praia">
+                    </div>
+               </div>
+          </div>
+      </div>
+
+      <!-- Início do Footer -->
+       <div class="footer">
+          <div class="container">
+               <span>V.0.1</span>
+          </div>
+       </div>
+</body>
+</html>
+
+<script>
+
+     // Lista que guarda as pessoas cadastradas
+     var lista_pessoas_cadastradas = [];
+
+     function cadastrar() {
+          var nomeVar = ipt_nome.value;
+          var emailVar = ipt_email.value;
+          var senhaVar = ipt_senha.value;
+          var confirmacaoSenhaVar = ipt_confirmacao_senha.value;
+
+     // Validação para saber se há algum campo vazio
+          if(
+               nomeVar == '' ||
+               emailVar == '' ||
+               senhaVar == '' ||
+               confirmacaoSenhaVar == ''
+          ) {
+               alert("Preencha os campos corretamente!")
+          } 
+
+     // Validação de nome
+          else if (
+               nomeVar.length < 2
+          ) {
+               alert("Nome inválido! O nome deve conter 2 ou mais letras.")
+          }
+
+     // Validação de email
+          else if (
+               !emailVar.includes('@') || !emailVar.endsWith('.com')
+          ) {
+               alert("Email Inválido! O Email deve conter '@' e '.com'")
+          }
+
+     // Validação de Senha
+          else if (
+               senhaVar.length < 8 && 
+               (!senhaVar.includes('!') || 
+               !senhaVar.includes('@') ||
+               !senhaVar.includes('#') ||
+               !senhaVar.includes('$') ||
+               !senhaVar.includes('%') ||
+               !senhaVar.includes('&') ||
+               !senhaVar.includes('*')) &&
+               (!senhaVar.includes('1') ||
+               !senhaVar.includes('2') ||
+               !senhaVar.includes('3') ||
+               !senhaVar.includes('4') ||
+               !senhaVar.includes('5') ||
+               !senhaVar.includes('6') ||
+               !senhaVar.includes('8') ||
+               !senhaVar.includes('9')) &&
+               (senhaVar.toUpperCase() == senhaVar ||
+               senhaVar.toLowerCase() == senhaVar)
+          ) {
+               alert("Senha Inválida! A senha deve conter pelo menos um caractere especial (!, @, #...), um número e uma letra maiúsucla")
+          }
+
+     // Confirmação de Senha
+          else if (
+               confirmacaoSenhaVar != senhaVar
+          ) {
+               alert("As senhas são diferentes!")
+          }
+        }
