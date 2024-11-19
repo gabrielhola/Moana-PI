@@ -5,7 +5,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Moana | Cadastro</title>
 </head>
-<body onload="listar()">
+<body>
      <!-- Início do header -->
       <div class="header">
           <div class="container-header">
@@ -58,9 +58,7 @@
        </div>
 </body>
 </html>
-
 <script>
-
      // Lista que guarda as pessoas cadastradas
      var lista_pessoas_cadastradas = [];
 
@@ -138,32 +136,26 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        idUsuarioVincularServer: idUsuarioVincular
       }),
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
-
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
           setTimeout(() => {
             window.location = "login.html";
           }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
       });
 
     return false;
         }
+</script>
