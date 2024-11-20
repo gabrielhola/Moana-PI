@@ -9,33 +9,33 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url(../assets/imgs/Fundo\ Site.png);
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 :root {
-    --tamanho-header: 100px;
+    --tamanho-header: 80px;
     --tamanho-banner: calc(100vh + var(--tamanho-header));
     --tamanho-pagina: calc(100vh + var(--tamanho-header) - 2px);
     --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
     --tamanho-footer: 200px;
 }
 
+.header {
+  display: flex;
+    width: 100%;
+    background-image: linear-gradient(to right, #F5F5F5, #8F8F8F);
+    justify-content: center;    
+}
+.header .container {
+  height: 30%;
+}
+
 .container {
+  height: 100%;
     display: flex;
     width: 80%;
     margin: auto;
 }
 
-.header {
-    width: 100%;
-    height: var(--tamanho-header);
-    background-image: linear-gradient(to right, #F5F5F5, #8F8F8F);
-    position: fixed;
-    justify-content: center;    
-    height: 90px;
-}
 
   .header a {
     font-size: large;
@@ -44,6 +44,7 @@ body {
   }
 
   .navbar {
+    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -55,5 +56,143 @@ body {
     height: 80px;
   }
 
+  .banner {
+    height: var(--tamanho-banner);
+    background-image: url(../assets/imgs/Fundo\ Site.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
+  .banner .container {
+   display: flex;
+   flex-direction: column;
+  }
 
+  .banner .container h1 {
+    font-size: 50px;
+  }
+
+  .banner .container p {
+    font-size: 30px;
+  }
+
+  .sobre-mim {
+    background-color: #F5F5F5;
+    display: flex;
+    height: var(--tamanho-banner);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .sobre-mim .container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sobre-mim .container h1 {
+    font-size: 50px;
+  }
+
+  .box-sobre-mim .lousa {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .box-sobre-mim .lousa p{
+    font-size: 20px;
+  }
+
+  .oque-praia {
+    height: var(--tamanho-banner);
+    background-image: url(../assets/imgs/Fundo\ Site.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .oque-praia .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .oque-praia h1 {
+    font-size: 50px;
+  }
+
+  .box-oque .lousa {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  } 
+
+  .box-oque .lousa p{
+    font-size: 30px;
+  }
+
+  .box-oque .box-quadros {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .importancia-praia {
+    background-color: #F5F5F5;
+    display: flex;
+    height: var(--tamanho-banner);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .importancia-praia .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .importancia-praia .container h1 {
+    font-size: 50px;
+  }
+
+  .importancia-praia .lousa {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .importancia-praia .lousa p {
+    font-size: 30px;
+  }
+
+  .proteja-praia {
+    height: var(--tamanho-banner);
+    background-image: url(../assets/imgs/Fundo\ Site.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .proteja-praia .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .proteja-praia .container h1 {
+    font-size: 50px;
+  }
+
+  .proteja-praia .lousa {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .proteja-praia .lousa p {
+    font-size: 30px;
+  }
+
+  .footer {
+    display: flex;
+    width: 100%;
+    background-image: linear-gradient(to right, #F5F5F5, #8F8F8F);
+    justify-content: center;    
+  }
+
+  .footer .container {
+    justify-content: center;
+    text-align: center;
+  }
