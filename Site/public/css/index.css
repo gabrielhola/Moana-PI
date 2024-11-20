@@ -114,6 +114,11 @@ body {
     flex-direction: column;
   }
 
+  .oque-praia img {
+    width: 256px;
+    height: 171px;
+  }
+
   .oque-praia h1 {
     font-size: 50px;
   }
@@ -146,6 +151,11 @@ body {
     flex-direction: column;
   }
 
+  .importancia-praia img {
+    width: 150px;
+    height: 150px;
+  }
+
   .importancia-praia .container h1 {
     font-size: 50px;
   }
@@ -170,7 +180,7 @@ body {
     display: flex;
     flex-direction: column;
   }
-
+  
   .proteja-praia .container h1 {
     font-size: 50px;
   }
@@ -179,6 +189,7 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
   }
 
   .proteja-praia .lousa p {
