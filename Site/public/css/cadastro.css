@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    scroll-behavior: smooth;
+    font-family: 'Istok Web';
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --tamanho-header: 80px;
+    --tamanho-banner: calc(100vh + var(--tamanho-header));
+    --tamanho-pagina: calc(100vh + var(--tamanho-header) - 2px);
+    --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-footer: 100px;
+}
+
+.header {
+  display: flex;
+    width: 100%;
+    background-image: linear-gradient(to right, #F5F5F5, #8F8F8F);
+    justify-content: center;    
+}
+.header .container {
+  height: 30%;
+}
+
+.container {
+  height: 100%;
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+
+  .header a {
+    font-size: large;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+  }
+
+  .header .img-navbar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .login {
+    height: var(--tamanho-login);
+    background-image: url(../assets/imgs/Fundo\ Site.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .login .container {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .card {
+    /* background-color: #9ED0D6;
+    border-radius: 20px;
+    opacity: 0.6;
+    width: 70%;
+    height: 90%;
+    margin: auto; */
+    width: 50%;
+    background-color: #9ED0D6;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 80%;
+    padding: 20px;
+  }
+
+  .formulario {
+    display: flex;
+    height: 90%;
+    width: 80%;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+  .texto p {
+    color: #000;
+  }
+
+  .formulario input {
+    height: 40px;
+    width: 40%;
+    border: 2px solid #F5F5F5;
+    border-radius: 10px;
+    margin: 0;
+  }
+
+  .campo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+  }
+
+  .botao {
+    cursor: pointer;
+    border: 0;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+    background-image: linear-gradient(to right, #436FFF, #002499);
+    width: 40%;
+    height: 10%;
+    align-self: flex-start;
+    margin-top: 20px;
+  }
+
+  .footer {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background-image: linear-gradient(to right, #F5F5F5, #8F8F8F);
+    justify-content: center;    
+  }
+
+  .footer .container {
+    justify-content: center;
+    text-align: center;
+  }

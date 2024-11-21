@@ -3,7 +3,6 @@
 * {
     scroll-behavior: smooth;
     font-family: 'Istok Web';
-    font-weight: 'Istok Web';
 }
 
 body {
@@ -73,7 +72,7 @@ body {
   }
 
   .banner .container p {
-    font-size: 30px;
+    font-size: 40px;
   }
 
   .sobre-mim {
