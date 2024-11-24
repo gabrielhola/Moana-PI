@@ -54,6 +54,10 @@ body {
     height: 80px;
   }
 
+  .hello {
+    align-self: center;
+  }
+
   .banner {
     height: var(--tamanho-pagina);
     background-image: url(./../assets/imgs/Fundo\ Site.png);
