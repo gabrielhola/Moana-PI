@@ -101,6 +101,13 @@ body {
     font-size: 20px;
   }
 
+  .minha-foto {
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+    border-radius: 20px;
+  }
+
   .oque-praia {
     height: var(--tamanho-banner);
     background-image: url(../assets/imgs/Fundo\ Site.png);
@@ -116,6 +123,7 @@ body {
   .oque-praia img {
     width: 256px;
     height: 171px;
+    border-radius: 20px;
   }
 
   .oque-praia h1 {
