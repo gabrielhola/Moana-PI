@@ -86,6 +86,10 @@ body {
      border-radius: 20px;
 }
 
+.kpi-fav span {
+  align-self: center;
+}
+
 .kpi-nfav {
     background-image: linear-gradient(to right, #ff6a6a, #ff0000);
     height: 50px;

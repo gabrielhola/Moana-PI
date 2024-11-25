@@ -32,16 +32,20 @@
              <div class="dash">
               <div class="indicadores">
                 <div class="kpi-praia-usuario">
-                  <span><b>Praia que você votou:</b></span>
+                  <span><b>Praia que você votou:</b></span><br>
+                  <span><b>Praia Preta - São Sebastião</b></span>
                 </div>
                 <div class="kpi-fav">
-                  <span><b>Praia favorita dos usuarios:</b></span>
+                  <span><b>Praia favorita dos usuarios:</b></span><br>
+                  <span><b>Baía dos Porcos - Fernando de Noronha</b></span>
                 </div>
                 <div class="kpi-nfav">
-                  <span><b>Praia menos favorita dos usuarios:</b></span>
+                  <span><b>Praia menos favorita dos usuarios:</b></span><br>
+                  <span><b>Praia Preta - São Sebastião</b></span>
                 </div>
                 <div class="kpi-num-avaliacoes">
-                  <span><b>Número de avaliações:</b></span>
+                  <span><b>Número de avaliações:</b></span><br>
+                  <span><b>29</b></span>
                 </div>
               </div>
                 <div class="quadro">
@@ -64,16 +68,22 @@
 
 <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+  function dadosVotacao () {
+    fetch("/votacao/capturarVoto", {
+      method: "GET",
+    })
+  }
   
     const ctx = document.getElementById('myChart');
   
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: [],
+        labels: ['Baía dos Porcos - Fernando de Noronha', 'Bora Bora - Polinésia Francesa', 'Praia da Conceição - Fernando de Noronha', 'Praia do Farol - Arraial do Cabo', 'Praia Preta - São Sebastião'],
         datasets: [{
           label: 'Percentual das praias favoritas dos usuários',
-          data: [12, 19, 3, 5, 2, 3],
+          data: [28, 24, 17, 17, 14],
           borderWidth: 1
         }]
       },
