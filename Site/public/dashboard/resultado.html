@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/resultado.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Moana | Resultados</title>
 </head>
 <body>
@@ -24,6 +26,53 @@
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
     </div>
+
+    <div class="pagina">
+        <div class="container">
+             <div class="dash">
+                <div class="kpi-quadro">
+                    <div class="kpi-fav">
+                        <span><b>Praia favorita dos usuarios:</b></span>
+                    </div>
+                    <div class="kpi-nfav">
+                        <span><b>Praia menos favorita dos usuarios:</b></span>
+                    </div>
+                </div>
+                <div class="grafico">
+                    <canvas id="myChart"></canvas>
+                  </div>
+             </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+          <h4>Contate-me! gabriel.holanda@sptech.school | V.1.0 | 2024</h4>
+        </div>
+      </div>
     
 </body>
 </html>
+
+<script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Percentual das praias favoritas dos usuários',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
