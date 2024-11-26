@@ -65,11 +65,15 @@
 <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-  function dadosVotacao () {
-    fetch("/votacao/capturarVoto", {
-      method: "GET",
-    })
-  }
+  // function mostrarResultados () {
+  //   fetch("/resultado/mostrarResultado", {
+  //     method: "GET",
+  //     headers: {
+  //                "Content-Type": "application/json"
+  //           },
+            
+  //   })
+  // }
   
     const ctx = document.getElementById('myChart');
   
