@@ -86,10 +86,6 @@ body {
      border-radius: 20px;
 }
 
-.kpi-fav span {
-  align-self: center;
-}
-
 .kpi-nfav {
     background-image: linear-gradient(to right, #ff6a6a, #ff0000);
     height: 50px;
@@ -97,15 +93,8 @@ body {
     border-radius: 20px;
   }
 
-    .kpi-praia-usuario {
-      background-image: linear-gradient(to right, #faff6c, #ffdd00);
-      height: 50px;
-      padding: 10px;
-      border-radius: 20px;
-    }
-
     .kpi-num-avaliacoes {
-      background-image: linear-gradient(to right, #5dc6ff, #00b7ff);
+      background-image: linear-gradient(to right, #faff6c, #ffdd00);
       height: 50px;
       padding: 10px;
       border-radius: 20px;

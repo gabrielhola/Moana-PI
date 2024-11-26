@@ -4,11 +4,11 @@ var router = express.Router();
 var votacaoController = require("../controllers/votacaoController");
 
 router.get("/:idPraia", function (req, res) {
-  votacaoController.buscarVotacao(req, res);
+  votacaoController.votar(req, res);
 });
 
-router.post("/cadastrar", function (req, res) {
-  votacaoController.cadastrar(req, res);
+router.post("/votar", function (req, res) {
+  votacaoController.votar(req, res);
 })
 
 module.exports = router;

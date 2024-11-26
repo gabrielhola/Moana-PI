@@ -1,9 +1,9 @@
 var votacaoModel = require("../models/votacaoModel");
 
-function buscarVotacao(req, res) {
+function votar(req, res) {
   var idPraia = req.params.idPraia;
 
-  VotacaoModel.buscarVotacao(idPraia).then((resultado) => {
+  votacaoModel.votar(idPraia).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {
@@ -14,6 +14,18 @@ function buscarVotacao(req, res) {
     console.log("Houve um erro ao buscar os aquarios: ", erro.sqlMessage);
     res.status(500).json(erro.sqlMessage);
   });
+}
+
+function votar(req, res) {
+    var idPraia = req.body.idPraia
+
+    // Colocar validaçoes
+
+    votacaoModel.votar(idPraia)
+    .then (function(resultado) {
+        res.json(resultado);
+    })
+    // Colocar cenario de erro (catch)
 }
 
 
@@ -44,6 +56,5 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-  buscarAquariosPorEmpresa,
-  cadastrar
+    votar
 }

@@ -39,7 +39,7 @@
                     </p>
                 </div>
                 <div class="click">
-                    <button class="botao" onclick="votar()">Votar</button>
+                    <button class="botao" onclick="votar(1)">Votar</button>
                 </div>
             </div>
             <div class="quadro">
@@ -52,7 +52,7 @@
                     </p>
                 </div>
                 <div class="click">
-                    <button class="botao" onclick="votar()">Votar</button>
+                    <button class="botao" onclick="votar(2)">Votar</button>
                 </div>
             </div>
             <div class="quadro">
@@ -65,7 +65,7 @@
                     </p>
                 </div>
                 <div class="click">
-                    <button class="botao" onclick="votar()">Votar</button>
+                    <button class="botao" onclick="votar(3)">Votar</button>
                 </div>
             </div>
             <div class="quadro">
@@ -78,7 +78,7 @@
                     </p>
                 </div>
                 <div class="click">
-                    <button class="botao" onclick="votar()">Votar</button>
+                    <button class="botao" onclick="votar(4)">Votar</button>
                 </div>
             </div>
             <div class="quadro">
@@ -91,7 +91,7 @@
                     </p>
                 </div>
                 <div class="click">
-                    <button class="botao" onclick="votar()">Votar</button>
+                    <button class="botao" onclick="votar(5)">Votar</button>
                 </div>
             </div>
         </div>
@@ -111,11 +111,23 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 
-    function votar() {
-        setTimeout(function () {
-            window.location = "./resultado.html";
-        }, 1000);
+    function votar(idPraia) {
+
+        fetch('/votacao/votar', {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idPraia: parseInt(sessionStorage.ID_PRAIA),
+            })
+        }) .then(function (resultado) {
+            if (resultado.ok) {
+                window.location = "./resultado.html";
+            }
+        })
     }
+
 
 
 
