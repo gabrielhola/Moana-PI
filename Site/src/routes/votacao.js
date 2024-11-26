@@ -8,6 +8,7 @@ router.get("/:idPraia", function (req, res) {
 });
 
 router.post("/votar", function (req, res) {
+  console.log("o")
   votacaoController.votar(req, res);
 })
 

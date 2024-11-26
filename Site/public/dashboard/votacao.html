@@ -112,16 +112,16 @@
 
 
     function votar(idPraia) {
-
+        console.log(idPraia)
         fetch('/votacao/votar', {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json"
+                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                idPraia: parseInt(sessionStorage.ID_PRAIA),
+                identificador: idPraia,
             })
-        }) .then(function (resultado) {
+        }).then(function (resultado) {
             if (resultado.ok) {
                 window.location = "./resultado.html";
             }

@@ -1,7 +1,9 @@
 var votacaoModel = require("../models/votacaoModel");
 
 function votar(req, res) {
-  var idPraia = req.params.idPraia;
+  console.log("BODY")
+  console.log(req.body)
+  var idPraia = req.body.identificador;
 
   votacaoModel.votar(idPraia).then((resultado) => {
     if (resultado.length > 0) {
@@ -15,19 +17,6 @@ function votar(req, res) {
     res.status(500).json(erro.sqlMessage);
   });
 }
-
-function votar(req, res) {
-    var idPraia = req.body.idPraia
-
-    // Colocar validaçoes
-
-    votacaoModel.votar(idPraia)
-    .then (function(resultado) {
-        res.json(resultado);
-    })
-    // Colocar cenario de erro (catch)
-}
-
 
 function cadastrar(req, res) {
   var descricao = req.body.descricao;

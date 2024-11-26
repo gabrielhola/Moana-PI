@@ -36,12 +36,10 @@ insert into praia values
 (default, 'Praia do Farol - Arraial do Cabo', 0),
 (default, 'Baía dos Porcos - Fernando de Noronha', 0);
 
-update praia
-set qtdVotos = qtdVotos + 1
-where idPraia = 5;
-
 select nome, qtdVotos from praia
 order by qtdVotos desc;
+
+truncate praia;
 
 
 
