@@ -23,8 +23,6 @@ qtdVotos int
 );
 
 
-select * from votacao;
-
 
 select nome, qtdVotos from praia
 order by qtdVotos desc;
@@ -39,7 +37,8 @@ insert into praia values
 select nome, qtdVotos from praia
 order by qtdVotos desc;
 
+update praia
+set qtdVotos = 0
+where idPraia = 5;
+
 truncate praia;
-
-
-

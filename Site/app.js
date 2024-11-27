@@ -37,7 +37,7 @@ app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);
 app.use("/empresas", empresasRouter);
 app.use("/votacao", votacaoRouter);
-// app.use("/resultado", resultadoRouter);
+app.use("/resultado", resultadoRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
