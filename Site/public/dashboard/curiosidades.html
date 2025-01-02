@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/curiosidades.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Moana | Curiosidades</title>
+</head>
+<body>
+
+    <!-- Início da Barra de Navegação -->
+    <div class="header">
+        <div class="container">
+            <ul class="navbar">
+                <img src="./../assets/icon/Planeta Terra.png !!!VOLTAR AO NORMAL DEPOIS!!!" alt="Planeta Terra">
+                <li>
+                    <a href="./../index.html">Página Inicial</a>
+                </li>
+                <li>
+                    <a href="./../cadastro.html">Cadastre-se</a>
+                </li>
+                <li>
+                    <a href="./votacao.html">Votação</a>
+                </li>
+                <li>
+                    <a href="./resultado.html">Resultado da Votação</a>
+                </li>
+            </ul>
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+        </div>
+    </div>
+    <!-- Fim da Varra de Navegação  -->
+
+    <!-- Início da Primeira página com curiosidades -->
+     <div class="curiosidades-1">
+        <div class="container">
+            <div class="caixas-1">
+                <div class="caixa-1">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat soluta, fugit suscipit iusto praesentium ab repellendus dicta pariatur! Accusantium, quam.
+                    </p>
+                </div>
+                <div class="caixa-2">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium vero ea non eos natus nisi consequatur qui fugit. Provident, magnam!
+                    </p>
+                </div>
+                <div class="caixa-3">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum et eum mollitia ea! Repellendus amet libero nulla doloremque doloribus dolorem?
+                    </p>
+                </div>
+            </div>
+        </div>
+     </div>
+     <!-- Fim da Primeira página com curiosidades -->
+
+     <!-- Início da Segunda Página com curiosidades -->
+      <div class="curiosidades-2">
+        <div class="container">
+            <div class="caixas-2">
+                <div class="caixa-1">
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet sint ipsa reprehenderit, sapiente nam magni perferendis dolorum earum dolorem corrupti?
+                    </p>
+                </div>
+                <div class="caixa-2">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur labore voluptatum aut iure, corrupti expedita voluptatem dolorum mollitia numquam harum?
+                    </p>
+                </div>
+                <div class="caixa-3">
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem eum quos ab libero placeat aspernatur omnis aliquam repellat ea incidunt?
+                    </p>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- Fim da Segunda Página com curiosidades -->
+
+      <!-- Início da Terceira página com curiosidades -->
+       <div class="curiosidades-3">
+        <div class="container">
+            <div class="caixas-3">
+                <div class="caixa-1">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium consequatur earum quasi iusto fugit eligendi quisquam, ipsa autem totam. Perferendis!
+                    </p>
+                </div>
+                <div class="caixa-2">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates temporibus dolorum tenetur qui corporis veritatis ex explicabo quaerat libero cumque.
+                    </p>
+                </div>
+                <div class="caixa-3">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores temporibus rerum ducimus aliquam alias adipisci doloribus explicabo vero sed laborum!
+                    </p>
+                </div>
+            </div>
+        </div>
+       </div>
+       <!-- Fim da Terceira página com curiosidades -->
+
+       <!-- Gráfico dos usuários que já visitaram e não visitaram a praia -->
+        <div class="pagina-grafico">
+            <div class="container">
+                <div class="quadro">
+                    <div class="grafico">
+                        <canvas id="myChart"></canvas>
+                      </div>
+                </div>
+            </div>
+        </div>
+    
+</body>
+</html>
+
+<script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Red', 'Yellow'],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19],
+          borderWidth: 1,
+          backgroundColor: ['#ff9a4c', '#1f9cfe']
+        }]
+      },
+    });
+  </script>
+  

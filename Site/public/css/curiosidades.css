@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    scroll-behavior: smooth;
+    font-family: 'Istok Web'; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --tamanho-header: 80px;
+    --tamanho-banner: calc(100vh + var(--tamanho-header));
+    --tamanho-pagina: calc(100vh + var(--tamanho-header) - 2px);
+    --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-footer: 200px;
+}
+
+.header {
+    display: flex;
+      width: 100%;
+      background-image: linear-gradient(to right, #F5F5F5, #8F8F8F);
+      justify-content: center;    
+  }
+  .header .container {
+    height: 30%;
+  }
+  
+  .container {
+    height: 100%;
+      display: flex;
+      width: 80%;
+      margin: auto;
+  }
+  
+  
+    .header a {
+      font-size: large;
+      text-decoration: none;
+      color: #000;
+    }
+  
+    .navbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      list-style: none;
+    }
+  
+    .header .img-navbar {
+      width: 80px;
+      height: 80px;
+    }
