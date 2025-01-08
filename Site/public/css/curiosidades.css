@@ -1,15 +1,19 @@
+/* Importando a fonte utilizada no site */
 @import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+/* Caracteristica da rolagem do site e implementação da fonte */
 * {
     scroll-behavior: smooth;
     font-family: 'Istok Web'; 
 }
 
+/* COnfigurações do body (Sem margem e padding) */
 body {
     margin: 0;
     padding: 0;
 }
 
+/* Criação das variáveis para o tamanho das páginas */
 :root {
     --tamanho-header: 80px;
     --tamanho-banner: calc(100vh + var(--tamanho-header));
@@ -18,12 +22,14 @@ body {
     --tamanho-footer: 200px;
 }
 
+/* Início do Header */
 .header {
     display: flex;
       width: 100%;
       background-image: linear-gradient(to right, #F5F5F5, #8F8F8F);
       justify-content: center;    
   }
+
   .header .container {
     height: 30%;
   }
@@ -39,7 +45,6 @@ body {
     .header a {
       font-size: large;
       text-decoration: none;
-      color: #000;
     }
   
     .navbar {
@@ -54,3 +59,112 @@ body {
       width: 80px;
       height: 80px;
     }
+
+    /* Fim do Header */
+
+    /* Primeira  página com curiosidades - 06/01/25 */
+
+    .curiosidades-1 {
+      height: var(--tamanho-banner);
+      background-image: url(../assets/imgs/Fundo\ Site.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .caixas-1 {
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+    }
+
+    .caixas-1 .caixa-2 {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+
+    p {
+      font-size: larger;
+    }
+
+    /* Fim da Primeira  página com curiosidades - 06/01/25 */
+
+    /* Segunda  página com curiosidades - 06/01/25 */
+
+    .curiosidades-2 {
+      background-color: #F5F5F5;
+      display: flex;
+      height: var(--tamanho-banner);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .caixas-2 {
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+    }
+
+    .caixas-2 .caixa-1 .caixa-3 {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+
+    /* Fim Segunda  página com curiosidades - 06/01/25 */
+
+    /* Terceira página com curiosidades - 06/01/25 */
+
+    .curiosidades-3 {
+      height: var(--tamanho-banner);
+      background-image: url(../assets/imgs/Fundo\ Site.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .caixas-3 {
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+    }
+
+    .caixas-3 .caixa-2 {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+
+    /* Página do gráfico */
+
+    .pagina-grafico {
+      background-color: #F5F5F5;
+      display: flex;
+      height: var(--tamanho-banner);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+   .pagina-grafico .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+   }
+
+   .quadro {
+    height: 500px;
+    width: 500px;
+    margin-bottom: 10%;
+   }
+
+   .footer {
+    display: flex;
+    width: 100%;
+    background-image: linear-gradient(to right, #F5F5F5, #8F8F8F);
+    justify-content: center;    
+  }
+
+  .footer .container {
+    justify-content: center;
+    text-align: center;
+  }
