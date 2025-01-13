@@ -77,9 +77,22 @@ body {
       flex-direction: column;
     }
 
+    .caixas-1 .caixa-1 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     .caixas-1 .caixa-2 {
       display: flex;
       flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .caixas-1 .caixa-3 {
+      display: flex;
+      align-items: center;
       justify-content: space-between;
     }
 
@@ -93,7 +106,6 @@ body {
 
     .curiosidades-2 {
       background-color: #F5F5F5;
-      display: flex;
       height: var(--tamanho-banner);
       background-repeat: no-repeat;
       background-size: cover;
@@ -105,10 +117,17 @@ body {
       flex-direction: column;
     }
 
+    .caixas-2 .caixa-2 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     .caixas-2 .caixa-1 .caixa-3 {
       display: flex;
-      flex-direction: row-reverse;
       justify-content: space-between;
+      flex-direction: row-reverse;
+      align-items: center;
     }
 
     /* Fim Segunda  página com curiosidades - 06/01/25 */
@@ -128,9 +147,22 @@ body {
       flex-direction: column;
     }
 
+    .caixas-3 .caixa-1 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     .caixas-3 .caixa-2 {
       display: flex;
       flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .caixas-3 .caixa-3 {
+      display: flex;
+      align-items: center;
       justify-content: space-between;
     }
 
@@ -167,4 +199,61 @@ body {
   .footer .container {
     justify-content: center;
     text-align: center;
+  }
+
+  /* Resolução das imagens - 13/01/25 */
+
+  .img-domjoao {
+    height: 275px;
+    width: 210px;
+    border-radius: 10px;
+  }
+
+  .img-praiaxviii {
+    width: 256px;
+    height: 205px;
+    border-radius: 10px ;
+  }
+
+  .img-manet {
+    height: 200px;
+    width: 246px;
+    border-radius: 10px;
+  }
+
+  .img-praiacassino {
+    width: 270px;
+    height: 180px;
+    border-radius: 10px;
+  }
+
+  .img-praiadiamante {
+    width: 320px;
+    height: 180px;
+    border-radius: 10px;
+  }
+
+  .img-praiarosa {
+    width: 326px;
+    height: 217px;
+    border-radius: 10px;
+  }
+
+  .img-tartarugaplastico {
+    width: 400px;
+    height: 224px;
+    border-radius: 10px;
+  }
+
+  .img-inundacao {
+    width: 300px;
+    height: 165px;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+
+  .img-ilhalixo {
+    width: 326px;
+    height: 206px;
+    border-radius: 10px;
   }
