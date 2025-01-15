@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Moana | Social</title>
+</head>
+<body>
+
+    <!-- Criação da Parte social do site - 14/01/25 -->
+     <!-- Início da barra de navegação - 14/01/25 -->
+     <div class="header">
+        <div class="container">
+            <ul class="navbar">
+                <img src="./../assets/icon/Planeta Terra.png !!!VOLTAR AO NORMAL DEPOIS!!!" alt="Planeta Terra">
+                <li>
+                    <a href="./../index.html">Página Inicial</a>
+                </li>
+                <li>
+                    <a href="./../cadastro.html">Cadastre-se</a>
+                </li>
+                <li>
+                    <a href="./curiosidades.html">Curiosidades</a>
+                </li>
+                <li>
+                    <a href="./votacao.html">Votação</a>
+                </li>
+                <li>
+                    <a href="./resultado.html">Resultado da Votação</a>
+                </li>
+            </ul>
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+        </div>
+    </div>
+    <!-- Fim da barra de navegação -->
+
+    <!-- Início da tela de regras - 14/01/25 -->
+     <div class="avisos">
+        <div class="container">
+            <div class="quadro">
+                <p>
+                    Essa página foi criada para que você usuário possa deixar suas contribuições sem limites sobre qualquer assunto relacionado a praias, oceano e meio ambiente! 🏖️🌊🐚🪸🐬
+                </p>
+                <h2>Regras</h2>
+                <p>
+                    O chat é <span style="color: orange;"><strong>EXCLUSIVAMENTE</strong></span> para assuntos relacionados a praias, oceano e meio ambiente.
+                </p>
+                <p>
+                    <span style="color: red;"><strong>NÃO</strong></span> serão toleradas palavras obscenas, ofensivas, racistas, homofóbica, ou discriminatória.
+                </p>
+                <p>
+                    <span style="color: red;"><strong>NÃO</strong></span> fazer ameaças ou assediar outros usuários.
+                </p>
+                <p>
+                    Você pode fazer quantas contribuições quiser!
+                </p>
+                <p>
+                    Lembre-se! Aqui é um ambiente seguro para contribuições, troca de informações e debates lógicos e racionais.
+                </p>
+            </div>
+        </div>
+     </div>
+     <!-- Fim da tela de Regras 14/01/25 -->
+
+     <!-- Início da página do chat 14/01/25 -->
+      <div class="chat">
+        <div class="container">
+            <div class="quadro-chat">
+                <div class="mensagem">
+                    <input type="text">
+                </div>
+                <div class="contribuicoes">
+                    <div class="contribuicao-usuario">
+                        <h5 id="b_usuario">usuário</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- Fim da página do chat 14/01/25 -->
+
+      <!-- Gráfico com os 5 usuários com mais contribuições -->
+       <div class="ranking">
+        <div class="container">
+            <div class="quadro-grafico">
+                <div class="grafico">
+                    <canvas id="myChart"></canvas>
+                  </div>
+            </div>
+        </div>
+       </div>
+    
+      <!-- Início do footer 14/01/25 -->
+      <div class="footer">
+        <div class="container">
+          <h4>Contate-me! gabriel.holanda@sptech.school | V.1.0 | 2024</h4>
+        </div>
+      </div>
+      <!-- Fim do footer 14/01/25 -->
+</body>
+</html>
+
+<script>
+    const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Giovana', 'Carlos', 'Gabriel', 'Júlia', 'Kaique'],
+    datasets: [{
+      label: 'Os 5 usuários que mais contribuem',
+      data: [19, 12, 5, 3, 3, 2],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+</script>
