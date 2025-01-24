@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/social.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Moana | Social</title>
 </head>
@@ -13,7 +14,7 @@
      <div class="header">
         <div class="container">
             <ul class="navbar">
-                <img src="./../assets/icon/Planeta Terra.png !!!VOLTAR AO NORMAL DEPOIS!!!" alt="Planeta Terra">
+                <img src="./../assets/icon/Planeta Terra.png //////" alt="Planeta Terra">
                 <li>
                     <a href="./../index.html">Página Inicial</a>
                 </li>
@@ -49,7 +50,7 @@
                     O chat é <span style="color: orange;"><strong>EXCLUSIVAMENTE</strong></span> para assuntos relacionados a praias, oceano e meio ambiente.
                 </p>
                 <p>
-                    <span style="color: red;"><strong>NÃO</strong></span> serão toleradas palavras obscenas, ofensivas, racistas, homofóbica, ou discriminatória.
+                    <span style="color: red;"><strong>NÃO</strong></span> serão toleradas palavras obscenas, ofensivas, racistas, homofóbicas, ou discriminatórias.
                 </p>
                 <p>
                     <span style="color: red;"><strong>NÃO</strong></span> fazer ameaças ou assediar outros usuários.
@@ -70,11 +71,20 @@
         <div class="container">
             <div class="quadro-chat">
                 <div class="mensagem">
-                    <input type="text">
+                    <textarea id="contribuicao" type="text" placeholder="Digite sua contribuição, lembre-se das regras."></textarea>
+                    <div class="botao">
+                        <button onclick="publicar()">Publicar</button>
+                    </div>
                 </div>
                 <div class="contribuicoes">
                     <div class="contribuicao-usuario">
-                        <h5 id="b_usuario">usuário</h5>
+                        <h5 id="b_usuario">usuário</h5> <p>Fui à praia de Cabo Frio e foi muito legal!</p>
+                    </div>
+                    <div class="contribuicao-usuario">
+                        <h5>usuario</h5> <p>Pude ver baleias jubartes durante minha viagem no Litoral Norte de São Paulo.</p>
+                    </div>
+                    <div class="contribuicao-usuario">
+                        <h5>usuario</h5> <p>Visitei a praia da Santos em São Paulo e fiquei perplexa com a quantidade de lixo na areia. Vamos fazer nossa parte, pessoal!</p>
                     </div>
                 </div>
             </div>
