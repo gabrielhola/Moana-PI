@@ -3,9 +3,10 @@ var votacaoModel = require("../models/votacaoModel");
 function votar(req, res) {
   console.log("BODY")
   console.log(req.body)
-  var idPraia = req.body.identificador;
+  var fkUsuario = req.body.idUsuarioServer;
+  var fkPraia = req.body.idPraiaServer;
 
-  votacaoModel.votar(idPraia).then((resultado) => {
+  votacaoModel.votar(fkUsuario, fkPraia).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {
@@ -18,31 +19,6 @@ function votar(req, res) {
   });
 }
 
-function cadastrar(req, res) {
-  var descricao = req.body.descricao;
-  var idUsuario = req.body.idUsuario;
-
-  if (descricao == undefined) {
-    res.status(400).send("descricao está undefined!");
-  } else if (idUsuario == undefined) {
-    res.status(400).send("idUsuario está undefined!");
-  } else {
-
-
-    aquarioModel.cadastrar(descricao, idUsuario)
-      .then((resultado) => {
-        res.status(201).json(resultado);
-      }
-      ).catch((erro) => {
-        console.log(erro);
-        console.log(
-          "\nHouve um erro ao realizar o cadastro! Erro: ",
-          erro.sqlMessage
-        );
-        res.status(500).json(erro.sqlMessage);
-      });
-  }
-}
 
 module.exports = {
     votar

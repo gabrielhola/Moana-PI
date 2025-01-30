@@ -1,44 +1,43 @@
-CREATE DATABASE moana;
+create database moana_bd;
+use moana_bd;
 
-USE moana;
-
-CREATE TABLE usuario (
-	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(254),
-	senha CHAR(50),
-    fkPraia int,
-    constraint fkPraiaUsuario foreign key (fkPraia)
-    references praia(idPraia)
+create table usuario (
+idUsuario int primary key auto_increment,
+nome varchar (255),
+email varchar(100),
+senha varchar (100),
+visitou_praia tinyint
 );
 
-select * from usuario;
-
-truncate usuario;
-
-CREATE TABLE praia (
+create table praia (
 idPraia int primary key auto_increment,
-nome varchar(45),
-qtdVotos int
+nome varchar (100),
+localizacao varchar (100)
 );
-
-
-
-select nome, qtdVotos from praia
-order by qtdVotos desc;
 
 insert into praia values
-(default, 'Bora Bora - Polinésia Francesa', 0),
-(default, 'Praia da Conceição - Fernando de Noronha', 0),
-(default, 'Praia Preta - São Sebastião', 0),
-(default, 'Praia do Farol - Arraial do Cabo', 0),
-(default, 'Baía dos Porcos - Fernando de Noronha', 0);
+(default, 'Bora Bora', 'Polinésia Francesa'),
+(default, 'Praia da Conceição', 'Fernando de Noronha'),
+(default, 'Praia Preta', 'São Sebastião'),
+(default, 'Praia do Farol', 'Arraial do Cabo'),
+(default, 'Baía dos Porcos', 'Fernando de Noronha');
 
-select nome, qtdVotos from praia
-order by qtdVotos desc;
+select * from praia;
 
-update praia
-set qtdVotos = 0
-where idPraia = 5;
+create table resultado_votacao (
+fkUsuario int,
+fkPraia int,
+constraint fkResultadoUsuario foreign key (fkUsuario)
+references usuario(idUsuario),
+constraint fkResultadoPraia foreign key (fkPraia)
+references praia(idPraia),
+constraint pkResultado primary key (fkUsuario, fkPraia)
+);
 
-truncate praia;
+create table contribuicao (
+idContribuicao int primary key auto_increment,
+fkUsuario int,
+constraint fkContribuicaoUsuario foreign key (fkUsuario)
+references usuario(idUsuario),
+data_contribuicao date
+);
