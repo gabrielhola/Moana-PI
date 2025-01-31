@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Moana | Social</title>
 </head>
+
 <body>
 
     <!-- Criação da Parte social do site - 14/01/25 -->
-     <!-- Início da barra de navegação - 14/01/25 -->
-     <div class="header">
+    <!-- Início da barra de navegação - 14/01/25 -->
+    <div class="header">
         <div class="container">
             <ul class="navbar">
                 <img src="./../assets/icon/Planeta Terra.png //////" alt="Planeta Terra">
@@ -39,18 +41,21 @@
     <!-- Fim da barra de navegação -->
 
     <!-- Início da tela de regras - 14/01/25 -->
-     <div class="avisos">
+    <div class="avisos">
         <div class="container">
             <div class="quadro">
                 <p>
-                    Essa página foi criada para que você usuário possa deixar suas contribuições sem limites sobre qualquer assunto relacionado a praias, oceano e meio ambiente! 🏖️🌊🐚🪸🐬
+                    Essa página foi criada para que você usuário possa deixar suas contribuições sem limites sobre
+                    qualquer assunto relacionado a praias, oceano e meio ambiente! 🏖️🌊🐚🪸🐬
                 </p>
                 <h2>Regras</h2>
                 <p>
-                    O chat é <span style="color: orange;"><strong>EXCLUSIVAMENTE</strong></span> para assuntos relacionados a praias, oceano e meio ambiente.
+                    O chat é <span style="color: orange;"><strong>EXCLUSIVAMENTE</strong></span> para assuntos
+                    relacionados a praias, oceano e meio ambiente.
                 </p>
                 <p>
-                    <span style="color: red;"><strong>NÃO</strong></span> serão toleradas palavras obscenas, ofensivas, racistas, homofóbicas, ou discriminatórias.
+                    <span style="color: red;"><strong>NÃO</strong></span> serão toleradas palavras obscenas, ofensivas,
+                    racistas, homofóbicas, ou discriminatórias.
                 </p>
                 <p>
                     <span style="color: red;"><strong>NÃO</strong></span> fazer ameaças ou assediar outros usuários.
@@ -59,79 +64,137 @@
                     Você pode fazer quantas contribuições quiser!
                 </p>
                 <p>
-                    Lembre-se! Aqui é um ambiente seguro para contribuições, troca de informações e debates lógicos e racionais.
+                    Lembre-se! Aqui é um ambiente seguro para contribuições, troca de informações e debates lógicos e
+                    racionais.
                 </p>
             </div>
         </div>
-     </div>
-     <!-- Fim da tela de Regras 14/01/25 -->
+    </div>
+    <!-- Fim da tela de Regras 14/01/25 -->
 
-     <!-- Início da página do chat 14/01/25 -->
-      <div class="chat">
+    <!-- Início da página do chat 14/01/25 -->
+    <div class="chat">
         <div class="container">
             <div class="quadro-chat">
                 <div class="mensagem">
-                    <textarea id="contribuicao" type="text" placeholder="Digite sua contribuição, lembre-se das regras."></textarea>
+                    <textarea id="texto" type="text"
+                        placeholder="Digite sua contribuição, lembre-se das regras. Permitido até 255 caracteres."
+                        maxlength="255"></textarea>
                     <div class="botao">
-                        <button onclick="publicar()">Publicar</button>
+                        <button onclick="contribuir(idUsuario, dataFormatada)">Publicar</button>
                     </div>
                 </div>
                 <div class="contribuicoes">
                     <div class="contribuicao-usuario">
-                        <h5 id="b_usuario">usuário</h5> <p>Fui à praia de Cabo Frio e foi muito legal!</p>
+                        <h5 id="b_usuario">usuário</h5>
+                        <p id="contribuicaoParagrafo"></p>
                     </div>
                     <div class="contribuicao-usuario">
-                        <h5>usuario</h5> <p>Pude ver baleias jubartes durante minha viagem no Litoral Norte de São Paulo.</p>
+                        <h5>usuario</h5>
+                        <p>Pude ver baleias jubartes durante minha viagem no Litoral Norte de São Paulo.</p>
                     </div>
                     <div class="contribuicao-usuario">
-                        <h5>usuario</h5> <p>Visitei a praia da Santos em São Paulo e fiquei perplexa com a quantidade de lixo na areia. Vamos fazer nossa parte, pessoal!</p>
+                        <h5>usuario</h5>
+                        <p>Visitei a praia da Santos em São Paulo e fiquei perplexa com a quantidade de lixo na areia.
+                            Vamos fazer nossa parte, pessoal!</p>
                     </div>
                 </div>
             </div>
         </div>
-      </div>
-      <!-- Fim da página do chat 14/01/25 -->
+    </div>
+    <!-- Fim da página do chat 14/01/25 -->
 
-      <!-- Gráfico com os 5 usuários com mais contribuições -->
-       <div class="ranking">
+    <!-- Gráfico com os 5 usuários com mais contribuições -->
+    <div class="ranking">
         <div class="container">
             <div class="quadro-grafico">
                 <div class="grafico">
                     <canvas id="myChart"></canvas>
-                  </div>
+                </div>
             </div>
         </div>
-       </div>
-    
-      <!-- Início do footer 14/01/25 -->
-      <div class="footer">
+    </div>
+
+    <!-- Início do footer 14/01/25 -->
+    <div class="footer">
         <div class="container">
-          <h4>Contate-me! gabriel.holanda@sptech.school | V.1.0 | 2024</h4>
+            <h4>Contate-me! gabriel.holanda@sptech.school | V.1.0 | 2024</h4>
         </div>
-      </div>
-      <!-- Fim do footer 14/01/25 -->
+    </div>
+    <!-- Fim do footer 14/01/25 -->
 </body>
+
 </html>
 
 <script>
     const ctx = document.getElementById('myChart');
+    const idUsuario = sessionStorage.ID_USUARIO
+    const data = new Date()
+    const dataFormatada = (data.getFullYear() + "-" + ((data.getMonth() + 1)) + "-" + (data.getDate()));
 
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['Giovana', 'Carlos', 'Gabriel', 'Júlia', 'Kaique'],
-    datasets: [{
-      label: 'Os 5 usuários que mais contribuem',
-      data: [19, 12, 5, 3, 3, 2],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
+    function contribuir(idUsuario, dataFormatada) {
+        const conteudo = document.getElementById("texto").value;
+        console.log(idUsuario, conteudo, dataFormatada)
+        fetch('/social/contribuir', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuario,
+                conteudoServer: conteudo,
+                dataContribuicaoServer: dataFormatada
+            })
+        }).then(function (resultado) {
+            if (resultado.ok) {
+                setTimeout(() => window.location.reload(), 500)
+            }
+        })
     }
-  }
-});
+
+    function exibirContribuicao() {
+
+        fetch(`/social/exibirContribuicao`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Contribuição: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    if (resposta.length > 0) {
+                        const contribuicoes = resposta[0]
+                        const contribuicoesTela = document.getElementById('contribuicaoParagrafo')
+
+                        contribuicaoParagrafo.innerHTML = contribuicoes.conteudo
+                    }
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Giovana', 'Carlos', 'Gabriel', 'Júlia', 'Kaique'],
+            datasets: [{
+                label: 'Os 5 usuários que mais contribuem',
+                data: [19, 12, 5, 3, 3, 2],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 </script>

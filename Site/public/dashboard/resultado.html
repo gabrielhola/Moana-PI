@@ -23,6 +23,12 @@
       <li>
         <a href="./votacao.html">Votação</a>
       </li>
+      <li>
+        <a href="./curiosidades.html">Curiosidades</a>
+      </li>
+      <li>
+        <a href="./social.html">Social</a>
+      </li>
     </ul>
     <div class="hello">
       <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
@@ -154,7 +160,7 @@
             const NumeroVotos = resposta[0]
             const spanNumeroVotos = document.getElementById('spanNumeroVotos')
 
-            spanNumeroVotos.innerHTML = NumeroVotos['Total de Votos']
+            spanNumeroVotos.innerHTML = NumeroVotos.total
           }
 
         });
