@@ -141,19 +141,81 @@
 </html>
 
 <script>
-    const ctx = document.getElementById('myChart');
+    const ctx = document.getElementById('myChart').getContext('2d');
+    
+
+  function obterUsuariosNaoPraia() {
+    fetch(`/curiosidades/obterUsuariosNaoPraia`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta1) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta1)}`);
+          resposta1.reverse();
+
+          plotarGrafico(resposta1);
+
+    
+
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+
+  }
+
+  function obterUsuariosSimPraia() {
+    fetch(`/curiosidades/obterUsuariosSimPraia`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta2) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta2)}`);
+          resposta2.reverse();;
+
+          plotarGrafico(resposta2);
+
+        
+
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+
+  }
+
+    
   
-    new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels: ['Nunca visitaram a praia', 'Já visitaram a praia'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19],
-          borderWidth: 1,
-          backgroundColor: ['#ff9a4c', '#1f9cfe']
-        }]
-      },
-    });
+    function plotarGrafico(nuncaForam, jaForam) {
+        const labels = ['Nunca foram à praia', 'Já foram à praia'];
+        const data = [nuncaForam, jaForam];
+
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Visitas à Praia',
+                    data: data,
+                    backgroundColor: ['#FF6384', '#36A2EB']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    }
+
+obterUsuariosNaoPraia()
+obterUsuariosSimPraia()
   </script>
   

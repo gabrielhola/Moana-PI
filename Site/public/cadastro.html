@@ -37,6 +37,14 @@
                          <div class="campo">
                               <input type="password" id="ipt_confirmacao_senha" placeholder="Confirme a Senha">
                          </div>
+                         <div class="campo">
+                              <h3 class="pergunta">Você ja visitou alguma praia?</h3>
+                              <select id="slt_visitouPraia">
+                                   <option value="#">Selecione uma opção</option>
+                                   <option value="0">Não</option>
+                                   <option value="1">Sim</option>
+                              </select>
+                         </div>
                          <button class="botao" onclick="cadastrar()">Cadastre-se</button>
                     </div>
                     <div class="texto">
@@ -67,13 +75,16 @@
           var emailVar = ipt_email.value;
           var senhaVar = ipt_senha.value;
           var confirmacaoSenhaVar = ipt_confirmacao_senha.value;
+          var visitouPraiaVar = slt_visitouPraia.value;
 
      // Validação para saber se há algum campo vazio
           if(
                nomeVar == '' ||
                emailVar == '' ||
                senhaVar == '' ||
-               confirmacaoSenhaVar == ''
+               confirmacaoSenhaVar == '' ||
+               visitouPraiaVar == '#'
+
           ) {
                alert("Preencha os campos corretamente!")
           } 
@@ -134,6 +145,7 @@
                    nomeServer: nomeVar,
                    emailServer: emailVar,
                    senhaServer: senhaVar,
+                   visitouPraiaServer: visitouPraiaVar
                  }),
                })
                  .then(function (resposta) {
