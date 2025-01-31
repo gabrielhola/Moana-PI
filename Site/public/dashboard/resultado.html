@@ -1,89 +1,192 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../css/resultado.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Moana | Resultados</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./../css/resultado.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Moana | Resultados</title>
 </head>
+
 <body>
 
-    <div class="header">
-        <ul class="navbar">
-                  <img src="./../assets/icon/Planeta Terra.png" alt="Planeta Terra">
-                  <li>
-                       <a href="./../index.html">Página Inicial</a>
-                  </li>
-                  <li>
-                       <a href="./../cadastro.html">Cadastre-se</a>
-                  </li>
-                  <li>
-                    <a href="./votacao.html">Votação</a>
-                  </li>
-             </ul>
-             <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
+  <div class="header">
+    <ul class="navbar">
+      <img src="./../assets/icon/Planeta Terra.png" alt="Planeta Terra">
+      <li>
+        <a href="./../index.html">Página Inicial</a>
+      </li>
+      <li>
+        <a href="./../cadastro.html">Cadastre-se</a>
+      </li>
+      <li>
+        <a href="./votacao.html">Votação</a>
+      </li>
+    </ul>
+    <div class="hello">
+      <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
     </div>
+  </div>
 
-    <div class="pagina">
-        <div class="container">
-             <div class="dash">
-              <div class="indicadores">
-                <div class="kpi-fav">
-                  <span><b>Praia favorita dos usuarios:</b></span><br>
-                  <span><b>Baía dos Porcos - Fernando de Noronha</b></span>
-                </div>
-                <div class="kpi-nfav">
-                  <span><b>Praia menos favorita dos usuarios:</b></span><br>
-                  <span><b>Praia Preta - São Sebastião</b></span>
-                </div>
-                <div class="kpi-num-avaliacoes">
-                  <span><b>Número de avaliações:</b></span><br>
-                  <span><b>29</b></span>
-                </div>
-              </div>
-                <div class="quadro">
-                  <div class="grafico">
-                    <canvas id="myChart"></canvas>
-                  </div>
-                </div>
-             </div>
+  <div class="pagina">
+    <div class="container">
+      <div class="dash">
+        <div class="indicadores">
+          <div class="kpi-fav">
+            <span><b>Praia favorita dos usuarios:</b></span><br>
+            <span id="spanMaisVotos"><b></b></span>
+          </div>
+          <div class="kpi-nfav">
+            <span><b>Praia menos favorita dos usuarios:</b></span><br>
+            <span id="spanMenosVotos"><b></b></span>
+          </div>
+          <div class="kpi-num-avaliacoes">
+            <span><b>Número de avaliações:</b></span><br>
+            <span id="spanNumeroVotos"><b></b></span>
+          </div>
         </div>
-    </div>
-
-    <div class="footer">
-        <div class="container">
-          <h4>Contate-me! gabriel.holanda@sptech.school | V.1.0 | 2024</h4>
+        <div class="quadro">
+          <div class="grafico">
+            <canvas id="myChart"></canvas>
+          </div>
         </div>
       </div>
-    
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <h4>Contate-me! gabriel.holanda@sptech.school | V.1.0 | 2024</h4>
+    </div>
+  </div>
+
 </body>
+
 </html>
 
 <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  const ctx = document.getElementById('myChart');
+  var meuGrafico = null
 
-  function mostrarResultados () {
-    fetch("/resultado/mostrarResultado", {
-      method: "GET",
-      headers: {
-                 "Content-Type": "application/json"
-            },
-            
+  function obterDados() {
+    fetch(`/resultado/obterDados`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          plotarGrafico(resposta);
+
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
     })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+
   }
-  
-    const ctx = document.getElementById('myChart');
-  
-    new Chart(ctx, {
+
+  function obterPraiaMaisVotos() {
+
+    fetch(`/resultado/obterPraiaMaisVotos`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Praia com mais votos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          if (resposta.length > 0) {
+            const praiaMaisVotada = resposta[0]
+            const spanPraiaMaisVotos = document.getElementById('spanMaisVotos')
+
+            spanPraiaMaisVotos.innerHTML = praiaMaisVotada.nome
+          }
+
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+
+  }
+
+  function obterPraiaMenosVotos() {
+
+    fetch(`/resultado/obterPraiaMenosVotos`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Praia com menos votos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          if (resposta.length > 0) {
+            const praiaMenosVotada = resposta[0]
+            const spanPraiaMenosVotos = document.getElementById('spanMenosVotos')
+
+            spanPraiaMenosVotos.innerHTML = praiaMenosVotada.nome
+          }
+
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+
+  }
+
+  function obterNumeroVotos() {
+
+    fetch(`/resultado/obterNumeroVotos`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Total de todos os votos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          if (resposta.length > 0) {
+            const NumeroVotos = resposta[0]
+            const spanNumeroVotos = document.getElementById('spanNumeroVotos')
+
+            spanNumeroVotos.innerHTML = NumeroVotos['Total de Votos']
+          }
+
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+
+  }
+
+
+  function plotarGrafico(resposta) {
+
+    let praias = [];
+    let votos = [];
+
+    for (i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+      praias.push(registro.nome);
+      votos.push(registro['Total de Votos'])
+    }
+
+    meuGrafico = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Baía dos Porcos - Fernando de Noronha', 'Bora Bora - Polinésia Francesa', 'Praia da Conceição - Fernando de Noronha', 'Praia do Farol - Arraial do Cabo', 'Praia Preta - São Sebastião'],
+        labels: praias,
         datasets: [{
-          label: 'Número de votos de cada praia',
-          data: [8, 7, 5, 5, 4],
+          label: 'Total de Votos',
+          data: votos,
           borderWidth: 1
         }]
       },
@@ -95,4 +198,13 @@
         }
       }
     });
-  </script>
+
+  }
+
+
+  obterDados();
+  obterPraiaMaisVotos();
+  obterPraiaMenosVotos();
+  obterNumeroVotos();
+
+</script>
