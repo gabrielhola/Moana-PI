@@ -13,7 +13,7 @@
     <div class="header">
         <div class="container">
             <ul class="navbar">
-                <img src="./../assets/icon/Planeta Terra.png !!!VOLTAR AO NORMAL DEPOIS!!!" alt="Planeta Terra">
+                <img src="./../assets/icon/Planeta Terra.png" alt="Planeta Terra" class="img-navbar"> 
                 <li>
                     <a href="./../index.html">Página Inicial</a>
                 </li>
@@ -141,6 +141,7 @@
 </html>
 
 <script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     const ctx = document.getElementById('myChart').getContext('2d');
     
 
@@ -194,14 +195,20 @@
         const labels = ['Nunca foram à praia', 'Já foram à praia'];
         const data = [nuncaForam, jaForam];
 
-        new Chart(ctx, {
+        if (window.meuGrafico instanceof Chart) {
+            window.meuGrafico.destroy();
+        }
+
+        window.meuGrafico = new Chart(ctx, {
             type: 'pie',
             data: {
                 labels: labels,
                 datasets: [{
                     label: 'Visitas à Praia',
                     data: data,
-                    backgroundColor: ['#FF6384', '#36A2EB']
+                    backgroundColor: ['#FF6384', '#36A2EB'],
+                    borderColor: ['#FF6384', '#36A2EB'],
+                    borderWidth: 1
                 }]
             },
             options: {
