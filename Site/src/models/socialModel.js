@@ -20,7 +20,20 @@ function exibirContribuicao() {
     return database.executar(instrucaoSql);
 }
 
+function obterUsuariosContribuicao() {
+
+    var instrucaoSql = `
+        select nome, count(fkUsuario) as 'Total de contribuições' from contribuicao
+        join usuario 
+        on fkUsuario = idUsuario
+        group by nome;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     contribuir,
-    exibirContribuicao
+    exibirContribuicao,
+    obterUsuariosContribuicao
 }

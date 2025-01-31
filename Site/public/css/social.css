@@ -148,8 +148,18 @@ body {
         background-size: cover;
        }
 
+        .ranking .container {
+          display: flex;
+          justify-content: center;
+        }
+
+
        .quadro-grafico {
         background-color: #F5F5F5;
+        border-radius: 20px;
+        align-self: center;
+        justify-content: center;
+        width: 80%;
        }
        
        /* Inicio do Footer -  24/01/25*/

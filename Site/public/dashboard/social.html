@@ -86,7 +86,7 @@
                 </div>
                 <div class="contribuicoes">
                     <div class="contribuicao-usuario">
-                        <h5 id="b_usuario">usuário</h5>
+                        <h5 >usuário</h5>
                         <p id="contribuicaoParagrafo"></p>
                     </div>
                     <div class="contribuicao-usuario">
@@ -127,6 +127,7 @@
 </html>
 
 <script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO; 
     const ctx = document.getElementById('myChart');
     const idUsuario = sessionStorage.ID_USUARIO
     const data = new Date()
@@ -178,23 +179,56 @@
 
     }
 
+    function obterUsuariosContribuicao() {
+        fetch(`/social/obterUsuariosContribuicao`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Giovana', 'Carlos', 'Gabriel', 'Júlia', 'Kaique'],
-            datasets: [{
-                label: 'Os 5 usuários que mais contribuem',
-                data: [19, 12, 5, 3, 3, 2],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+                    plotarGrafico(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function plotarGrafico(resposta) {
+
+        let nome = [];
+        let contribuicoes = [];
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            nome.push(registro.nome);
+            contribuicoes.push(registro['Total de contribuições'])
+        }
+
+        meuGrafico = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: nome,
+                datasets: [{
+                    label: 'Total de contribuições',
+                    data: contribuicoes,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
+        });
+    }
+
+    obterUsuariosContribuicao()
 </script>

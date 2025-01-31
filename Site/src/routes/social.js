@@ -17,4 +17,9 @@ router.get("/exibirContribuicao", function (req, res) {
     socialController.exibirContribuicao(req, res);
 });
 
+router.get("/obterUsuariosContribuicao", function (req, res) {
+  console.log("Enviando contribuição")
+  socialController.obterUsuariosContribuicao(req, res);
+});
+
 module.exports = router;
