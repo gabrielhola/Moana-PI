@@ -143,8 +143,9 @@
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     const ctx = document.getElementById('myChart').getContext('2d');
+    let meuGrafico;
     
-
+// Função que pega o número em pencertual de usuários que nunca foram à praia 31/01/25
   function obterUsuariosNaoPraia() {
     fetch(`/curiosidades/obterUsuariosNaoPraia`, { cache: 'no-store' }).then(function (response) {
       if (response.ok) {
@@ -167,7 +168,8 @@
 
   }
 
-  function obterUsuariosSimPraia() {
+  // Função que pega o número em percentual de usuários que nunca já à praia 31/01/25
+  async function obterUsuariosSimPraia() {
     fetch(`/curiosidades/obterUsuariosSimPraia`, { cache: 'no-store' }).then(function (response) {
       if (response.ok) {
         response.json().then(function (resposta2) {
@@ -190,34 +192,27 @@
   }
 
     
-  
-    function plotarGrafico(nuncaForam, jaForam) {
-        const labels = ['Nunca foram à praia', 'Já foram à praia'];
-        const data = [nuncaForam, jaForam];
+    // Função que manda o número em percentual dos usuários que já foram e dos usuários que nunca foram à praia 31/01/25
+    function plotarGrafico(resposta1, resposta2) {
+        
+        const labels = ['Nunca visitaram a praia', 'Já visitaram a praia'];
+        const data = [resposta1, resposta2];
 
-        if (window.meuGrafico instanceof Chart) {
-            window.meuGrafico.destroy();
+        if (meuGrafico) {
+            meuGrafico.destroy();
         }
 
-        window.meuGrafico = new Chart(ctx, {
+        meuGrafico = new Chart(ctx, {
             type: 'pie',
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Visitas à Praia',
+                    label: 'Percentual dos usuários',
                     data: data,
-                    backgroundColor: ['#FF6384', '#36A2EB'],
-                    borderColor: ['#FF6384', '#36A2EB'],
-                    borderWidth: 1
                 }]
             },
             options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top'
-                    }
-                }
+                backgroundColor: ['red', 'blue']
             }
         });
     }

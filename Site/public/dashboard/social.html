@@ -179,6 +179,8 @@
 
     }
 
+
+    // Função criada para obter o nome e número de contribuições dos 5 usuários mais ativos do site - 31/01/25
     function obterUsuariosContribuicao() {
         fetch(`/social/obterUsuariosContribuicao`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -199,6 +201,7 @@
 
     }
 
+    // Função criada para exibir nos gráficos os dados que pegamos na função "obterUsuariosContribuicao" - 31/01/25
     function plotarGrafico(resposta) {
 
         let nome = [];

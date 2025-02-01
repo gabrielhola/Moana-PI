@@ -1,5 +1,6 @@
 var curiosidadesModel = require("../models/curiosidadesModel");
 
+// Regras para que ocorra tudo bem na query que me ajuda a obter o número de usuários que nunca foram à praia 31/01/25
   function obterUsuariosNaoPraia(req, res) {
     curiosidadesModel.obterUsuariosNaoPraia().then(function (resultado) {
         if (resultado.length > 0) {
@@ -14,6 +15,7 @@ var curiosidadesModel = require("../models/curiosidadesModel");
     });
 }
 
+// Regras para que ocorra tudo bem na query que me ajuda a obter o número de usuários que nunca foram à praia 31/01/25
 function obterUsuariosSimPraia(req, res) {
     curiosidadesModel.obterUsuariosSimPraia().then(function (resultado) {
         if (resultado.length > 0) {
